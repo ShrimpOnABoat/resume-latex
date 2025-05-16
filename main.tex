@@ -1,0 +1,166 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{fontspec}
+\usepackage{setspace}
+
+% Localization setup
+\usepackage{ifthen}
+\newboolean{EN}
+\newboolean{FR}
+% Set true for the desired build
+\setboolean{EN}{true}  % set to false for French
+\setboolean{FR}{false} % set to true for French
+
+% Remove paragraph indentation
+\setlength{\parindent}{0pt}
+
+% Fonts and style
+\setmainfont{Helvetica Neue} % or use any clean sans-serif
+\definecolor{mainblue}{HTML}{0033A0}
+
+\titleformat{\section}
+  {\fontspec{Cambria}\fontsize{12pt}{14pt}\selectfont\bfseries}
+  {}{0pt}{}
+
+% Custom commands
+\newcommand{\resumeSection}[2]{%
+  \section*{#1}%
+  \vspace{-2em} % Negative space to move the rule closer to the title
+  \noindent\rule{\textwidth}{0.4pt}%
+  \vspace{0.5em} % Add a small space after the rule before content
+  #2
+  \vspace{0.3em}
+}
+
+\newcommand{\resumeItem}[3]{%
+  \noindent\textbf{#1} -- #2 \hfill \textbf{#3} \\
+  \vspace{0.3em}
+}
+
+\newcommand{\skillItem}[2]{%
+  \textbf{#1\ifthenelse{\boolean{EN}}{}{ }:}~#2\\
+}
+
+\newcommand{\jobItem}[2]{%
+  \noindent
+  \textbullet\ \textbf{#1\ifthenelse{\boolean{EN}}{}{ }:}~#2\vspace{0.3em} \\
+}
+
+\begin{document}
+
+\raggedright
+
+% Header
+\begin{center}
+  {\fontsize{18pt}{20pt}\selectfont Tony Buffard} \\[0.5em]
+  {\fontsize{10pt}{12pt}\selectfont\itshape\textcolor{gray}{Montreal, QC}} \\
+  {\small (514) 318-7491 • \href{mailto:tony.buffard@me.com}{tony.buffard@me.com} • \href{https://linkedin.com/in/tonybuffard}{linkedin.com/in/tonybuffard} • \href{https://github.com/ShrimpOnABoat}{github.com/ShrimpOnABoat}}
+\end{center}
+
+% \vspace{1em}
+
+% Objective
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Professional objective}{
+    Experienced Data Engineer and Project Manager with over 20 years of expertise in programming, database management, and scientific data analysis, seeking to leverage my technical and analytical skills in a role focused on data pipeline development, optimization, and integration.
+  }
+}{%
+  \resumeSection{Objectif professionnel}{
+    Ingénieur de données et chef de projet expérimenté avec plus de 20 ans d'expertise en programmation, gestion de bases de données et analyse de données scientifiques, cherchant à mettre à profit mes compétences techniques et analytiques dans un rôle axé sur le développement, l'optimisation et l'intégration de pipelines de données.
+  }
+}
+
+% Technical Skills
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Technical Skills \& Tools}{
+    \skillItem{Programming \& Scripting}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash}
+    \skillItem{Web \& Software Development}{Flask, FastAPI, Django, Firebase, WebRTC}
+    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git}
+    \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
+    \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch}
+    \skillItem{Operating Systems}{macOS, Windows, Linux}
+    \skillItem{Tools \& IDEs}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, Slurm}
+    \skillItem{Project management}{Agile, Scrum, Jira, Confluence, Sharepoint, Poker planning, PMP}
+    \skillItem{Languages}{French (native), English (fluent)}
+  }
+}{%
+  \resumeSection{Compétences techniques \& Outils}{
+    \skillItem{Programmation \& scripts}{Python, JavaScript (React, Node.js), Swift, SQL, Bash}
+    \skillItem{Développement web \& logiciel}{Flask, FastAPI}
+    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git}
+    \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
+    \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, apprentissage automatique}
+    \skillItem{Systèmes d'exploitation}{macOS, Windows, Linux}
+  }
+}
+
+% Experience
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Professional experience}{
+    \resumeItem{Full-Stack Developer \& Project Manager}{Videns Analytics}{2020-2024}
+    \jobItem{Cloud Solution (Airbus)}{As project manager, I successfully led a project for Airbus, deploying a Google Cloud Platform dashboard that improved aircraft delivery planning.}
+    \jobItem{Medical App – Computer Vision}{Built an OpenCV micro-service that automatically extracts patient data from document photos, outputting clean JSON for downstream EMR ingestion.}
+    \jobItem{SalesForce DAtat Migration}{Contributed ETL scripting and validation as part of a 10-deveoloper team that migrated heteroheneous data into SalesForce over a single weekend with zero critical downtime.}
+    \jobItem{Cosmetics E-commerce}{Implemented a client-side Face-API routine that validates selfie quality before upload, cutting unusable images by 40 \%.}
+    \jobItem{Analytics Maturity Survey}{Designed a responsive questionnaire in JavaScript / HTML / CSS, providing BI-ready results for sales teams.}
+    \jobItem{Python Time-Series Library}{Authored and unit-tested a reusable package for breakpoint detection, trend analysis and statistical summaries, now adopted across four client projects.}
+    \vspace{1em}
+    \resumeItem{Aging research project}{UQAM, UdeM}{2016-2022}
+    \jobItem{Scientific development}{Created Python scripts for biological datat analysis (Pandas, Matplotlib).}
+    \jobItem{Cloud infrastructure}{Implemented VirtualFlow pipelines on HPC servers for molecular screening.}
+    \vspace{1em}
+    \resumeItem{Studio Director \& Production Manager}{UQAM}{206-2014}
+    \jobItem{Team Supervision \& Management}{Led 500 employees acress creative, testing, marketing and e-commerce departments}
+    \jobItem{Game Development}{Managed production and launch of over 20 mobile and console games, including Dungeon Hunter 4 (15M players) and Asphalt 7 (20M players).}
+    \jobItem{Agile/Scrum Transition}{Trained teams, recruited experienced producers and optimized management processes.}
+    \jobItem{Quality Improvement}{Established a bridge role between creative and testing teams, implemented employee satisfaction measurement system.}
+    \jobItem{Talent Management}{Optimized recruitment processes and improved working conditions to enhance talent retention.}
+    \vspace{1em}
+    \resumeItem{Software Engineer}{Datavance}{1999-2006}
+    \jobItem{Database Management}{Served as a consultant at France Telecom for 2 years, providing level 3 support for cellular database systems. Ensured operational stability, managed data backups, and developed client reports. Also optimized database structures and queries.}
+    \jobItem{Software Development}{Programmed in C and SQL for critical datat management systems.}
+  }
+}{%
+  \resumeSection{Expérience}{
+    \resumeItem{Développeur full-stack \& chef de projet}{Videns Analytics}{2020 – 2024}
+    \jobItem{Solution cloud (Airbus)}{Architecture et déploiement d'un tableau de bord d'analyse Google Cloud Platform optimisant la planification de livraison d'aéronefs ; gestion du back-end sans serveur et CI/CD.}
+    \jobItem{Application médicale – Vision par ordinateur}{Création d'un microservice OpenCV extrayant automatiquement les données des patients à partir de photos de documents, produisant un JSON propre pour l'ingestion dans les DSE.}
+  }
+}
+
+% Education
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Education}{
+    \resumeItem{B.Sc. Biochemistry (Honours), Université de Montréal}{2010 – 2014}{Graduated with honours; coursework in pharmacology, molecular biology, and statistics.}
+  }
+}{%
+  \resumeSection{Formation}{
+    \resumeItem{B.Sc. biochimie (avec distinction), Université de Montréal}{2010 – 2014}{Diplômé avec distinction ; cours de pharmacologie, biologie moléculaire et statistiques.}
+  }
+}
+
+% Skills
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Skills}{
+    \textbf{Programming:} Swift, Python, JavaScript, C++ \\
+    \textbf{Tools:} Firebase, WebRTC, Xcode, LaTeX, Git \\
+    \textbf{Languages:} French (native), English (fluent)
+  }
+}{%
+  \resumeSection{Compétences}{
+    \textbf{Programmation :} Swift, Python, JavaScript, C++ \\
+    \textbf{Outils :} Firebase, WebRTC, Xcode, LaTeX, Git \\
+    \textbf{Langues :} français (natif), anglais (courant)
+  }
+}
+
+% Projects (Optional)
+%\resumeSection{Projects}{
+%  \resumeItem{Whist – Multiplayer Card Game}{2024 – Present}{Created a SwiftUI macOS game using Firebase and WebRTC; includes real-time networking and score tracking.}
+%}
+
+\end{document}
