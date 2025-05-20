@@ -1,5 +1,5 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[top=0.7in, bottom=0.7in, left=1in, right=1in]{geometry}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
@@ -52,6 +52,8 @@
 
 \begin{document}
 
+\pagestyle{empty}
+
 \raggedright
 
 % Header
@@ -70,7 +72,7 @@
   }
 }{%
   \resumeSection{Objectif professionnel}{
-    Ingénieur de données expérimenté et chef de projet avec plus de 20 ans d'expérience en programmation, gestion de bases de données et analyse de données scientifiques. Je souhaite mettre à profit mes compétences techniques et analytiques dans un rôle axé sur le développement, l'optimisation et l'intégration de pipelines de données.
+        Développeur Python expérimenté avec plus de 20 ans d’expérience en développement logiciel, analyse de données et gestion de projets. Je cherche à intégrer une équipe agile et innovante, où je pourrai contribuer à la conception et au développement d’applications performantes, notamment via Python, FastAPI, Flask ou Django, dans des environnements cloud et CI/CD.
   }
 }
 
@@ -81,6 +83,7 @@
     \skillItem{Web \& Software Development}{Flask, FastAPI, Django, Firebase, WebRTC}
     \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git}
     \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
+    \skillItem{Tests \& Quality}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
     \skillItem{Operating Systems}{macOS, Windows, Linux}
     \skillItem{Tools \& IDEs}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, Slurm, cron, crontab}
@@ -93,6 +96,7 @@
     \skillItem{Développement web \& logiciel}{Flask, FastAPI, Django, Firebase, WebRTC}
     \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git}
     \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
+    \skillItem{Tests \& qualité}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
     \skillItem{Systèmes d'exploitation}{macOS, Windows, Linux}
     \skillItem{Outils \& environnements de développement}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, Slurm, cron, crontab}
@@ -106,7 +110,7 @@
   \resumeSection{Professional experience}{
     \resumeItem{Full-Stack Developer \& Project Manager}{Videns Analytics}{2020-2024}
     \jobItem{Cloud Solution (Airbus)}{As a project manager, I successfully led a high-priority project for Airbus—one of our company’s most strategic clients—deploying a Google Cloud Platform dashboard that enhanced aircraft delivery planning.}
-    \jobItem{Medical App – Computer Vision}{Built an OpenCV micro-service that automatically extracts patient data from photographed documents, outputting clean JSON for downstream EMR ingestion.}
+    \jobItem{Medical App – Computer Vision}{Built an OpenCV micro-service that automatically extracts patient data from photographed documents, outputting clean JSON for downstream ingestion.}
     \jobItem{Salesforce Data Migration}{Contributed ETL scripting and validation as part of a 10-developer team that migrated heterogeneous data into Salesforce over a single weekend with zero critical downtime.}
     \jobItem{Cosmetics E-commerce}{Implemented a client-side Face-API routine that validates selfie quality before upload, reducing unusable image uploads by 40\%.}
     \jobItem{Analytics Maturity Survey}{Designed a responsive questionnaire in JavaScript / HTML / CSS, delivering BI-ready insights for sales teams.}
@@ -136,16 +140,17 @@
 }{%
   \resumeSection{Expérience professionnelle}{
     \resumeItem{Développeur full-stack \& chef de projet}{Videns Analytics}{2020–2024}
-    \jobItem{Solution cloud (Airbus)}{Architecture et déploiement d'un tableau de bord d'analyse Google Cloud Platform optimisant la planification de livraison d'aéronefs ; gestion du back-end sans serveur et CI/CD.}
-    \jobItem{Application médicale – Vision par ordinateur}{Création d'un microservice OpenCV extrayant automatiquement les données patient à partir de photos de documents, produisant un JSON propre pour l'ingestion dans les DSE.}
+    \jobItem{Solution cloud (Airbus)}{Architecture et déploiement d'un tableau de bord d'analyse Google Cloud Platform optimisant la planification de livraison d'aéronefs .}
+    \jobItem{Application médicale – Vision par ordinateur}{Création d'un microservice OpenCV extrayant automatiquement les données patient à partir de photos de documents, produisant un JSON propre pour ingestion.}
     \jobItem{Migration de données Salesforce}{Contribution à l'ETL et validation au sein d'une équipe de 10 développeurs pour migrer des données hétérogènes vers Salesforce en un week-end sans interruption critique.}
     \jobItem{E-commerce cosmétique}{Implémentation d'une routine Face-API côté client validant la qualité des selfies avant envoi, réduisant de 40\,\% les images inutilisables.}
     \jobItem{Questionnaire de maturité analytique}{Conception d'un questionnaire web responsive (JavaScript/HTML/CSS), fournissant des insights BI prêts à l'emploi pour les équipes commerciales.}
-    \jobItem{Bibliothèque Python séries temporelles}{Rédaction et tests unitaires d'un package réutilisable pour détection de ruptures, analyse de tendances et résumés statistiques, adopté dans quatre projets clients.}
+    \jobItem{Bibliothèque Python séries temporelles}{Rédaction et tests unitaires d'un package réutilisable pour détection de ruptures, analyse de tendances et résumés statistiques, adopté dans quatre projets clients. Inclut des tests unitaires avec Hypothesis.}
+    \jobItem{Développement Python \& APIs}{Création de microservices backend avec Flask et FastAPI; mise en place d’APIs REST robustes et testées.}
     \vspace{1em}
     \resumeItem{Projet de recherche sur le vieillissement}{UQAM, UdeM}{2016–2022}
     \jobItem{Développement scientifique}{Création de scripts Python (Pandas, Matplotlib) pour l'analyse de données biologiques; co-auteur d’une publication en libre accès (Biology Open: https://doi.org/10.1242/bio.058688). Conception de workflows bioinformatiques personnalisés avec Python et Biopython.}
-    \jobItem{Infrastructure cloud}{Mise en place de pipelines VirtualFlow sur serveurs HPC pour criblage moléculaire; extension à plus de 1,4 milliard de molécules sur SLURM; automatisation via cron et scripts Python.}
+    \jobItem{Infrastructure cloud}{Mise en place de pipelines VirtualFlow sur serveurs HPC pour criblage moléculaire; extension à plus de 1,4 milliard de molécules sur SLURM; automatisation via cron et scripts Python. Environnement Linux utilisé sur les serveurs HPC pour le traitement et l'automatisation.}
     \jobItem{Intégration de données}{Intégration et validation croisée de jeux de données génomiques, transcriptomiques et protéomiques pour garantir cohérence et fiabilité.}
     \jobItem{Analyse de données}{Analyse de profilage ribosomique et génomique avec scripts Python; génération de figures statistiques avec NumPy, Pandas et Seaborn.}
     \vspace{1em}
@@ -164,7 +169,6 @@
     \jobItem{Développement logiciel}{Programmation en C et SQL pour systèmes critiques de gestion de données.}
   }
 }
-
 
 % Education
 \ifthenelse{\boolean{EN}}{%
@@ -209,10 +213,5 @@
     \resumeItem{Sport}{Préparation à un marathon.}{}
   }
 }
-
-% Projects (Optional)
-%\resumeSection{Projects}{
-%  \resumeItem{Whist – Multiplayer Card Game}{2024 – Present}{Created a SwiftUI macOS game using Firebase and WebRTC; includes real-time networking and score tracking.}
-%}
 
 \end{document}
