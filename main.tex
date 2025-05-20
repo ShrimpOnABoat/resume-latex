@@ -11,9 +11,11 @@
 \usepackage{ifthen}
 \newboolean{EN}
 \newboolean{FR}
-% Set true for the desired build
-\setboolean{EN}{false}  % set to false for French
-\setboolean{FR}{false} % set to true for French
+% Default to French if no flag is passed
+\provideboolean{EN}
+\provideboolean{FR}
+\setboolean{EN}{false}
+\setboolean{FR}{true}
 
 % Remove paragraph indentation
 \setlength{\parindent}{0pt}
@@ -68,20 +70,20 @@
 % Objective
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Professional objective}{
-    Experienced Data Engineer and Project Manager with over 20 years of expertise in programming, database management, and scientific data analysis, seeking to leverage my technical and analytical skills in a role focused on data pipeline development, optimization, and integration.
+    Experienced Python Developer with over 20 years of experience in software development, data analysis, and project management. I’m seeking to join an agile and innovative team where I can contribute to designing and developing high-performance applications using Python, FastAPI, Flask, or Django in cloud-based and CI/CD environments.
   }
 }{%
   \resumeSection{Objectif professionnel}{
-        Développeur Python expérimenté avec plus de 20 ans d’expérience en développement logiciel, analyse de données et gestion de projets. Je cherche à intégrer une équipe agile et innovante, où je pourrai contribuer à la conception et au développement d’applications performantes, notamment via Python, FastAPI, Flask ou Django, dans des environnements cloud et CI/CD.
+    Développeur Python expérimenté avec plus de 20 ans d’expérience en développement logiciel, analyse de données et gestion de projets. Je souhaite intégrer une équipe agile et innovante où je pourrai contribuer à la conception et au développement d’applications performantes avec Python, FastAPI, Flask ou Django, dans des environnements cloud et CI/CD.
   }
 }
 
 % Technical Skills
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Technical Skills \& Tools}{
-    \skillItem{Programming \& Scripting}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++}
+    \skillItem{Programming \& Scripting}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++, asynchronous programming}
     \skillItem{Web \& Software Development}{Flask, FastAPI, Django, Firebase, WebRTC}
-    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git}
+    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git, CI/CD (Azure DevOps)}
     \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
     \skillItem{Tests \& Quality}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
@@ -92,9 +94,9 @@
   }
 }{%
   \resumeSection{Compétences techniques \& Outils}{
-    \skillItem{Programmation \& scripts}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++}
+    \skillItem{Programmation \& scripts}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++, programmation asynchrone}
     \skillItem{Développement web \& logiciel}{Flask, FastAPI, Django, Firebase, WebRTC}
-    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git}
+    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git, CI/CD (Azure DevOps)}
     \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
     \skillItem{Tests \& qualité}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
@@ -111,7 +113,7 @@
     \resumeItem{Full-Stack Developer \& Project Manager}{Videns Analytics}{2020-2024}
     \jobItem{Cloud Solution (Airbus)}{As a project manager, I successfully led a high-priority project for Airbus—one of our company’s most strategic clients—deploying a Google Cloud Platform dashboard that enhanced aircraft delivery planning.}
     \jobItem{Medical App – Computer Vision}{Built an OpenCV micro-service that automatically extracts patient data from photographed documents, outputting clean JSON for downstream ingestion.}
-    \jobItem{Salesforce Data Migration}{Contributed ETL scripting and validation as part of a 10-developer team that migrated heterogeneous data into Salesforce over a single weekend with zero critical downtime.}
+    \jobItem{Salesforce Data Migration}{Contributed ETL scripting and validation as part of a 10-developer team that migrated heterogeneous data into Salesforce over a single weekend with zero critical downtime. This project used Microsoft Azure DevOps to coordinate CI/CD pipelines and deployment.}
     \jobItem{Cosmetics E-commerce}{Implemented a client-side Face-API routine that validates selfie quality before upload, reducing unusable image uploads by 40\%.}
     \jobItem{Analytics Maturity Survey}{Designed a responsive questionnaire in JavaScript / HTML / CSS, delivering BI-ready insights for sales teams.}
     \jobItem{Python Time-Series Library}{Authored and unit-tested a reusable package for breakpoint detection, trend analysis, and statistical summaries, now adopted across four client projects.}
@@ -142,7 +144,7 @@
     \resumeItem{Développeur full-stack \& chef de projet}{Videns Analytics}{2020–2024}
     \jobItem{Solution cloud (Airbus)}{Architecture et déploiement d'un tableau de bord d'analyse Google Cloud Platform optimisant la planification de livraison d'aéronefs .}
     \jobItem{Application médicale – Vision par ordinateur}{Création d'un microservice OpenCV extrayant automatiquement les données patient à partir de photos de documents, produisant un JSON propre pour ingestion.}
-    \jobItem{Migration de données Salesforce}{Contribution à l'ETL et validation au sein d'une équipe de 10 développeurs pour migrer des données hétérogènes vers Salesforce en un week-end sans interruption critique.}
+    \jobItem{Migration de données Salesforce}{Contribution à l'ETL et validation au sein d'une équipe de 10 développeurs pour migrer des données hétérogènes vers Salesforce en un week-end sans interruption critique. Ce projet utilisait Microsoft Azure DevOps pour coordonner les pipelines CI/CD et le déploiement.}
     \jobItem{E-commerce cosmétique}{Implémentation d'une routine Face-API côté client validant la qualité des selfies avant envoi, réduisant de 40\,\% les images inutilisables.}
     \jobItem{Questionnaire de maturité analytique}{Conception d'un questionnaire web responsive (JavaScript/HTML/CSS), fournissant des insights BI prêts à l'emploi pour les équipes commerciales.}
     \jobItem{Bibliothèque Python séries temporelles}{Rédaction et tests unitaires d'un package réutilisable pour détection de ruptures, analyse de tendances et résumés statistiques, adopté dans quatre projets clients. Inclut des tests unitaires avec Hypothesis.}
