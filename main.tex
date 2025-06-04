@@ -1,4 +1,11 @@
 \documentclass[a4paper,10pt]{article}
+% pandoc compatibility
+\newif\ifpandocconvert
+\pandocconvertfalse % Default: building for PDF, so pandoc features are off
+\ifdefined\FORPANDOCPROCESSING
+  \pandocconverttrue
+\fi
+
 \usepackage[top=0.7in, bottom=0.7in, left=1in, right=1in]{geometry}
 \usepackage{enumitem}
 \usepackage{xcolor}
@@ -6,36 +13,59 @@
 \usepackage{titlesec}
 \usepackage{fontspec}
 \usepackage{setspace}
+\usepackage{ifthen}
 
 % Localization setup
-\usepackage{ifthen}
 \newboolean{EN}
 \newboolean{FR}
 % Default to French if no flag is passed
-\provideboolean{EN}
-\provideboolean{FR}
 \setboolean{EN}{false}
 \setboolean{FR}{true}
+% check for command-line overrides
+\ifdefined\PASSEDLANGUAGEEN
+  \setboolean{EN}{true}
+  \setboolean{FR}{false}
+\fi
+\ifdefined\PASSEDLANGUAGEFR
+  \setboolean{FR}{true}
+  \setboolean{EN}{false} % Explicitly set EN to false
+\fi
 
 % Remove paragraph indentation
 \setlength{\parindent}{0pt}
 
 % Fonts and style
-\setmainfont{Helvetica Neue} % or use any clean sans-serif
-\definecolor{mainblue}{HTML}{0033A0}
+\ifpandocconvert
+  % For Pandoc processing, we don't want fontspec or titlesec.
+  % Pandoc will use its own logic for sections.
+  % \section* will use default formatting.
+\else
+  % For PDF (XeLaTeX) processing:
+  \usepackage{fontspec}
+  \setmainfont{Helvetica Neue} % or use any clean sans-serif
+  \usepackage{titlesec}
+  \definecolor{mainblue}{HTML}{0033A0} % This can stay outside if xcolor is always loaded
 
-\titleformat{\section}
-  {\fontspec{Cambria}\fontsize{12pt}{14pt}\selectfont\bfseries}
-  {}{0pt}{}
+  \titleformat{\section}
+    {\fontspec{Cambria}\fontsize{12pt}{14pt}\selectfont\bfseries}
+    {}{0pt}{}
+\fi
+\definecolor{mainblue}{HTML}{0033A0} % Moved here, as xcolor is always loaded
 
 % Custom commands
 \newcommand{\resumeSection}[2]{%
-  \section*{#1}%
-  \vspace{-2em} % Negative space to move the rule closer to the title
-  \noindent\rule{\textwidth}{0.4pt}%
-  \vspace{0.5em} % Add a small space after the rule before content
-  #2
-  \vspace{0.3em}
+  \ifpandocconvert % If Pandoc is processing
+    \par\addvspace{1em}\noindent\textbf{#1}\par\addvspace{0.5em}%
+    #2%
+    \par\addvspace{0.3em}%
+  \else % For PDF (XeLaTeX) processing
+    \section*{#1}%
+    \vspace{-2em} % Negative space to move the rule closer to the title
+    \noindent\rule{\textwidth}{0.4pt}%
+    \vspace{0.5em} % Add a small space after the rule before content
+    #2%
+    \vspace{0.3em}%
+  \fi
 }
 
 \newcommand{\resumeItem}[3]{%
@@ -54,9 +84,11 @@
 
 \begin{document}
 
+\ifpandocconvert
+\else
 \pagestyle{empty}
-
 \raggedright
+\fi
 
 % Header
 \begin{center}
@@ -65,43 +97,61 @@
   {\small (514) 318-7491 • \href{mailto:tony.buffard@me.com}{tony.buffard@me.com} • \href{https://linkedin.com/in/tonybuffard}{linkedin.com/in/tonybuffard} • \href{https://github.com/ShrimpOnABoat}{github.com/ShrimpOnABoat}}
 \end{center}
 
-% \vspace{1em}
+% Profile Highlights (language-adaptive)
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Profile Highlights}{
+    \begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, leftmargin=1em, itemsep=-0.1em]
+      \item Over 6 years of experience building scalable, maintainable, and well-tested data pipelines and APIs in scientific and business environments.
+      \item Proficient in Python, with production experience in FastAPI, asynchronous programming, and REST API design.
+      \item Skilled at analyzing and visualizing complex datasets; experienced in database schema design and performance optimization.
+      \item Comfortable with CI/CD workflows, and cloud platforms (AWS, GCP, Azure); collaborative and adaptable in Agile teams.
+    \end{itemize}
+  }
+}{%
+  \resumeSection{Faits saillants du profil}{
+    \begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, leftmargin=1em, itemsep=-0.1em]
+      \item Plus de 6 ans d’expérience dans le développement d’APIs et de pipelines de données robustes et maintenables, en environnements scientifiques et d’affaires.
+      \item Maîtrise de Python, avec expérience concrète en FastAPI, programmation asynchrone et conception d’APIs REST.
+      \item Compétences en analyse de données complexes et en conception de schémas de base de données performants.
+      \item À l’aise avec les workflows CI/CD et les plateformes cloud (AWS, GCP, Azure); collaboratif et adaptable en équipes Agile.
+    \end{itemize}
+  }
+}
 
 % Objective
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Professional objective}{
-    Experienced Python Developer with over 20 years of experience in software development, data analysis, and project management. I’m seeking to join an agile and innovative team where I can contribute to designing and developing high-performance applications using Python, FastAPI, Flask, or Django in cloud-based and CI/CD environments.
+    Seeking a senior Python developer position where I can contribute my API design, backend development, and data engineering expertise to high-impact projects in a collaborative Agile environment.
   }
 }{%
   \resumeSection{Objectif professionnel}{
-    Développeur Python expérimenté avec plus de 20 ans d’expérience en développement logiciel, analyse de données et gestion de projets. Je souhaite intégrer une équipe agile et innovante où je pourrai contribuer à la conception et au développement d’applications performantes avec Python, FastAPI, Flask ou Django, dans des environnements cloud et CI/CD.
+    À la recherche d’un poste de développeur Python senior pour mettre à profit mes compétences en conception d’APIs, développement backend et ingénierie des données dans des projets à fort impact en environnement Agile.
   }
 }
 
 % Technical Skills
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Technical Skills \& Tools}{
-    \skillItem{Programming \& Scripting}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++, asynchronous programming}
-    \skillItem{Web \& Software Development}{Flask, FastAPI, Django, Firebase, WebRTC}
-    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git, CI/CD (Azure DevOps)}
+    \skillItem{Programming \& Scripting}{Python, asynchronous programming, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++}
+    \skillItem{Web \& Software Development}{Flask, FastAPI, Django, AngularJS, Firebase, WebRTC}
+    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Docker, Git, CI/CD (Azure DevOps)}
     \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
     \skillItem{Tests \& Quality}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
-    \skillItem{Operating Systems}{macOS, Windows, Linux}
-    \skillItem{Tools \& IDEs}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, Slurm, cron, crontab}
+    \skillItem{Tools \& IDEs}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, SVN (TortoiseSVN), Slurm, cron, crontab, Docker}
     \skillItem{Project management}{Agile, Scrum, Jira, Confluence, Sharepoint, Poker planning, PMP, team coaching, recruiting, retrospective facilitation}
     \skillItem{Languages}{French (native), English (fluent)}
   }
 }{%
   \resumeSection{Compétences techniques \& Outils}{
-    \skillItem{Programmation \& scripts}{Python, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++, programmation asynchrone}
-    \skillItem{Développement web \& logiciel}{Flask, FastAPI, Django, Firebase, WebRTC}
-    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Git, CI/CD (Azure DevOps)}
+    \skillItem{Programmation \& scripts}{Python, programmation asynchrone, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++}
+    \skillItem{Développement web \& logiciel}{Flask, FastAPI, Django, AngularJS, Firebase, WebRTC}
+    \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Docker, Git, CI/CD (Azure DevOps)}
     \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
     \skillItem{Tests \& qualité}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
     \skillItem{Systèmes d'exploitation}{macOS, Windows, Linux}
-    \skillItem{Outils \& environnements de développement}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, Slurm, cron, crontab}
+    \skillItem{Outils \& environnements de développement}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, SVN (TortoiseSVN), Slurm, cron, crontab, Docker}
     \skillItem{Gestion de projet}{Agile, Scrum, Jira, Confluence, Sharepoint, Poker planning, PMP, coaching d’équipe, recrutement, animation de rétrospectives}
     \skillItem{Langues}{Français (natif), Anglais (courant)}
   }
@@ -119,15 +169,15 @@
     \jobItem{Python Time-Series Library}{Authored and unit-tested a reusable package for breakpoint detection, trend analysis, and statistical summaries, now adopted across four client projects.}
     \vspace{1em}
     \resumeItem{Aging research project}{UQAM, UdeM}{2016-2022}
-    \jobItem{Scientific development}{Created Python scripts for biological data analysis (Pandas, Matplotlib). Co-authored open-access publication based on the analysis results. (Biology Open: https://doi.org/10.1242/bio.058688) Designed custom bioinformatics workflows to model biological systems and conduct trend detection using Python and Biopython.}
+    \jobItem{Scientific development}{Created Python scripts for biological data analysis (Pandas, Matplotlib). Co-authored open-access publication based on the analysis results. Designed custom bioinformatics workflows to model biological systems and conduct trend detection using Python and Biopython.}
     \jobItem{Cloud infrastructure}{Implemented VirtualFlow pipelines on HPC servers for molecular screening. Extended the VirtualFlow pipeline to over 1.4 billion molecules on Calcul Québec’s SLURM-based HPC system. Automated recovery and scheduling with `cron`, and built custom Python scripts to filter top molecular candidates.}
-    \jobItem{Integrated and cross-validated data from multiple sources to ensure consistency and reliability across genomic, transcriptomic, and proteomic datasets used in downstream statistical and structural analysis.}{}
+    \jobItem{Data integration}{Integrated and cross-validated data from multiple sources to ensure consistency and reliability across genomic, transcriptomic, and proteomic datasets used in downstream statistical and structural analysis.}
     \jobItem{Data analysis}{Analyzed ribosome profiling and human genome data using custom Python scripts; generated statistical figures with NumPy, Pandas, and Seaborn. Co-authored a study published in Biology Open.}
     \vspace{1em}
     \resumeItem{Founder}{Artplay (Startup project)}{2014–2015}
     \jobItem{Startup Development}{Started a hardware-focused startup aiming to develop a dynamic e-ink-based display. Joined the District 3 incubator’s intensive program. Created a business model, investor presentations, and early prototypes. Project paused due to technological immaturity at the time.}
     \vspace{1em}
-    \resumeItem{Studio Director \& Production Manager}{UQAM}{206-2014}
+    \resumeItem{Studio Director \& Production Manager}{Gameloft}{206-2014}
     \jobItem{Team Supervision \& Management}{Led 500 employees across creative, testing, marketing and e-commerce departments. Recruited, managed, and retained over 500 staff across 7 departments. Introduced employee satisfaction metrics and improved working conditions to reduce turnover in a competitive job market.}
     \jobItem{Game Development}{Managed production and launch of over 20 mobile and console games, including Dungeon Hunter 4 (15M players) and Asphalt 7 (20M players).}
     \jobItem{Agile/Scrum Transition}{Trained teams, recruited experienced producers and optimized management processes.}
@@ -151,7 +201,7 @@
     \jobItem{Développement Python \& APIs}{Création de microservices backend avec Flask et FastAPI; mise en place d’APIs REST robustes et testées.}
     \vspace{1em}
     \resumeItem{Projet de recherche sur le vieillissement}{UQAM, UdeM}{2016–2022}
-    \jobItem{Développement scientifique}{Création de scripts Python (Pandas, Matplotlib) pour l'analyse de données biologiques; co-auteur d’une publication en libre accès (Biology Open: https://doi.org/10.1242/bio.058688). Conception de workflows bioinformatiques personnalisés avec Python et Biopython.}
+    \jobItem{Développement scientifique}{Création de scripts Python (Pandas, Matplotlib) pour l'analyse de données biologiques; co-auteur d’une publication en libre accès. Conception de workflows bioinformatiques personnalisés avec Python et Biopython.}
     \jobItem{Infrastructure cloud}{Mise en place de pipelines VirtualFlow sur serveurs HPC pour criblage moléculaire; extension à plus de 1,4 milliard de molécules sur SLURM; automatisation via cron et scripts Python. Environnement Linux utilisé sur les serveurs HPC pour le traitement et l'automatisation.}
     \jobItem{Intégration de données}{Intégration et validation croisée de jeux de données génomiques, transcriptomiques et protéomiques pour garantir cohérence et fiabilité.}
     \jobItem{Analyse de données}{Analyse de profilage ribosomique et génomique avec scripts Python; génération de figures statistiques avec NumPy, Pandas et Seaborn.}
@@ -159,7 +209,7 @@
     \resumeItem{Fondateur}{Artplay (projet startup)}{2014–2015}
     \jobItem{Développement startup}{Lancement d'une startup hardware pour écran dynamique à encre électronique; participation au programme District 3; rédaction de business plan, présentations investisseurs et prototypes. Projet mis en pause en raison de l'immaturité technologique.}
     \vspace{1em}
-    \resumeItem{Directeur de studio \& responsable production}{UQAM}{2006–2014}
+    \resumeItem{Directeur de studio \& responsable production}{Gameloft}{2006–2014}
     \jobItem{Supervision d'équipe \& management}{Direction de 500 employés dans les départements créatif, test, marketing et e-commerce; recrutement et rétention; mise en place de métriques de satisfaction et amélioration des conditions de travail.}
     \jobItem{Développement de jeux}{Gestion de la production et lancement de plus de 20 jeux mobiles et consoles, dont Dungeon Hunter 4 (15 M de joueurs) et Asphalt 7 (20 M de joueurs).}
     \jobItem{Transition Agile/Scrum}{Formation des équipes, recrutement de Scrum Masters et optimisation des processus pour implémentation Agile/Scrum.}
@@ -168,7 +218,7 @@
     \vspace{1em}
     \resumeItem{Ingénieur logiciel}{Datavance}{1999–2006}
     \jobItem{Gestion de base de données}{Support de niveau 3 pour l'infrastructure de bases de données cellulaires de France Telecom; haute disponibilité, sauvegardes automatisées, rapports client, optimisation des requêtes.}
-    \jobItem{Développement logiciel}{Programmation en C et SQL pour systèmes critiques de gestion de données.}
+    \jobItem{Développement logiciel}{Programmation en C et SQL pour systèmes de gestion de données.}
   }
 }
 
@@ -180,8 +230,6 @@
     Applied bioinformatics, structural bioinformatics, Python scripting for statistical analysis and molecular modeling. Used machine learning models to predict molecular interactions and streamline drug discovery pipelines. \\
     \resumeItem{UQAM}{Bachelor's in Biochemistry (honors, GPA 4.26)}{2019}
     Computer science  for sciences, statistics for sciences, bioinformatics. \\
-    \resumeItem{PMP certification}{}{2015}
-    \resumeItem{McGill University}{Project management}{2015}
     \resumeItem{Ecole Nationale d'Ingénieurs de Brest}{Bachelor's in computer science \& electronics}{1999}
     Software engineering, distributed computing, artificial intelligence, virtual reality.
   }
@@ -192,8 +240,6 @@
     \noindent Scripts Python pour bioinformatique appliquée, bioinformatique structurale, analyse statistique et modélisation moléculaire.\\
     \resumeItem{UQAM}{Baccalauréat en biochimie (avec distinction, moyenne 4,26)}{2019}
     \noindent Informatique pour sciences, statistiques pour sciences, bioinformatique.\\
-    \resumeItem{Certification PMP}{}{2015}
-    \resumeItem{McGill University}{Gestion de projet}{2015}
     \resumeItem{École Nationale d'Ingénieurs de Brest}{Baccalauréat en informatique \& électronique}{1999}
     \noindent Génie logiciel, informatique distribuée, intelligence artificielle, réalité virtuelle.
   }
