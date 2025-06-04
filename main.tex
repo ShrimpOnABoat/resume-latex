@@ -82,6 +82,27 @@
   \textbullet\ \textbf{#1\ifthenelse{\boolean{EN}}{}{ }:}~#2\vspace{0.3em} \\
 }
 
+% ---------- Automated PDF naming ----------
+% Set the target company once per tailored version. Update this macro only.
+\newcommand{\CompanyName}{Épique}
+
+% On regular XeLaTeX builds (i.e., not Pandoc), rename the produced PDF at \end{document}.
+\ifpandocconvert
+  % Skip renaming when Pandoc is processing
+\else
+  % Choose the output name once, based on the active language.
+  \ifthenelse{\boolean{EN}}{%
+    \AtEndDocument{%
+      \immediate\write18{cp 'out/\jobname.pdf' 'out/Tony Buffard - \CompanyName\space - EN.pdf'}%
+    }%
+  }{%
+    \AtEndDocument{%
+      \immediate\write18{cp 'out/\jobname.pdf' 'out/Tony Buffard - \CompanyName\space - FR.pdf'}%
+    }%
+  }%
+\fi
+% ---------- End automated PDF naming ----------
+
 \begin{document}
 
 \ifpandocconvert
