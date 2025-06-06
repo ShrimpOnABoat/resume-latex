@@ -84,7 +84,7 @@
 
 % ---------- Automated PDF naming ----------
 % Set the target company once per tailored version. Update this macro only.
-\newcommand{\CompanyName}{Exertis JAM}
+\newcommand{\CompanyName}{Flexter}
 
 % On regular XeLaTeX builds (i.e., not Pandoc), rename the produced PDF at \end{document}.
 \ifpandocconvert
@@ -142,11 +142,10 @@
 % Objective
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Professional objective}{
-    Seeking a software developer role at Exertis JAM where I can leverage my end‑to‑end SDLC expertise, multi‑language skills, and passion for elegant, maintainable code to deliver reliable internal tools and customer‑facing applications.
-  }
+    Seeking a senior backend role at Flexter where I can help scale infrastructure and backend systems using modern Python APIs, cloud platforms, and DevOps practices. I aim to contribute to a fast-moving, innovative team focused on delivering reliable, high-performance software.  }
 }{%
   \resumeSection{Objectif professionnel}{
-    À la recherche d’un poste de développeur logiciel chez Exertis JAM afin de mettre à profit mon expertise du cycle SDLC complet, mes compétences multilingues en programmation et mon goût du code élégant et maintenable pour livrer des applications fiables et centrées utilisateur.
+        À la recherche d’un poste de développeur backend senior chez Flexter afin de participer à la montée en charge de plateformes cloud modernes et microservices, en mettant à profit mon expertise Python, mes pratiques DevOps et mon goût pour l’innovation dans un contexte startup.
   }
 }
 
@@ -156,7 +155,7 @@
     \skillItem{Programming \& Scripting}{Python, asynchronous programming, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++}
     \skillItem{Web \& Software Development}{Flask, FastAPI, Django, AngularJS, Firebase, WebRTC}
     \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Docker, Git, CI/CD (Azure DevOps)}
-    \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
+    \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server, cron}
     \skillItem{Tests \& Quality}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
     \skillItem{Tools \& IDEs}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, SVN (TortoiseSVN), Slurm, cron, crontab, Docker}
@@ -168,7 +167,7 @@
     \skillItem{Programmation \& scripts}{Python, programmation asynchrone, JavaScript (React, Node.js), C, Swift, SQL, Bash, C++}
     \skillItem{Développement web \& logiciel}{Flask, FastAPI, Django, AngularJS, Firebase, WebRTC}
     \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Docker, Git, CI/CD (Azure DevOps)}
-    \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server}
+    \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server, cron}
     \skillItem{Tests \& qualité}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
     \skillItem{Systèmes d'exploitation}{macOS, Windows, Linux}
@@ -188,6 +187,7 @@
     \jobItem{Cosmetics E-commerce}{Implemented a client-side Face-API routine that validates selfie quality before upload, reducing unusable image uploads by 40\%.}
     \jobItem{Analytics Maturity Survey}{Designed a responsive questionnaire in JavaScript / HTML / CSS, delivering BI-ready insights for sales teams.}
     \jobItem{Python Time-Series Library}{Authored and unit-tested a reusable package for breakpoint detection, trend analysis, and statistical summaries, now adopted across four client projects.}
+    \jobItem{CI/CD Automation \& DevOps}{Maintained and improved CI/CD pipelines for smooth deployments across environments. Used Docker and cron automation to streamline builds and data ingestion.}
     \vspace{1em}
     \resumeItem{Aging research project}{UQAM, UdeM}{2016-2022}
     \jobItem{Scientific development}{Created Python scripts for biological data analysis (Pandas, Matplotlib). Co-authored open-access publication based on the analysis results. Designed custom bioinformatics workflows to model biological systems and conduct trend detection using Python and Biopython.}
@@ -220,6 +220,7 @@
     \jobItem{Questionnaire de maturité analytique}{Conception d'un questionnaire web responsive (JavaScript/HTML/CSS), fournissant des insights BI prêts à l'emploi pour les équipes commerciales.}
     \jobItem{Bibliothèque Python séries temporelles}{Rédaction et tests unitaires d'un package réutilisable pour détection de ruptures, analyse de tendances et résumés statistiques, adopté dans quatre projets clients. Inclut des tests unitaires avec Hypothesis.}
     \jobItem{Développement Python \& APIs}{Création de microservices backend avec Flask et FastAPI; mise en place d’APIs REST robustes et testées.}
+    \jobItem{Automatisation CI/CD \& DevOps}{Maintenance et amélioration des pipelines CI/CD pour assurer des déploiements fluides; utilisation de Docker et de cron pour automatiser les processus d’intégration.}
     \vspace{1em}
     \resumeItem{Projet de recherche sur le vieillissement}{UQAM, UdeM}{2016–2022}
     \jobItem{Développement scientifique}{Création de scripts Python (Pandas, Matplotlib) pour l'analyse de données biologiques; co-auteur d’une publication en libre accès. Conception de workflows bioinformatiques personnalisés avec Python et Biopython.}
