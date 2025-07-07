@@ -84,7 +84,7 @@
 
 % ---------- Automated PDF naming ----------
 % Set the target company once per tailored version. Update this macro only.
-\newcommand{\CompanyName}{mthree}
+\newcommand{\CompanyName}{Roche}
 
 % On regular XeLaTeX builds (i.e., not Pandoc), rename the produced PDF at \end{document}.
 \ifpandocconvert
@@ -118,35 +118,37 @@
   {\small (514) 318-7491 • \href{mailto:tony.buffard@me.com}{tony.buffard@me.com} • \href{https://linkedin.com/in/tonybuffard}{linkedin.com/in/tonybuffard} • \href{https://github.com/ShrimpOnABoat}{github.com/ShrimpOnABoat}}
 \end{center}
 
-% Profile Highlights (language-adaptive)
+% Updated Objective and Highlights tailored for Software Developer to Architect pathway at Rogers
+
+% Objective (English version)
+\ifthenelse{\boolean{EN}}{%
+  \resumeSection{Professional objective}{
+    Bilingual software developer seeking to grow into a Software Architect role within a hybrid team in Montreal. I aim to leverage my experience in Python, cloud platforms, and CI/CD to design secure, scalable solutions while deepening my knowledge in DevOps, architecture, and cross-functional collaboration.
+  }
+}{%
+  \resumeSection{Objectif professionnel}{
+    Développeur bilingue en quête d’un rôle évolutif vers l’architecture logicielle au sein d’une équipe hybride à Montréal. Je souhaite mettre à profit mon expérience en Python, plateformes cloud et CI/CD pour concevoir des solutions sécurisées et évolutives, tout en approfondissant mes connaissances en DevOps, architecture et collaboration interdisciplinaire.
+  }
+}
+
+% Profile Highlights (English version)
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Profile Highlights}{
     \begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, leftmargin=1em, itemsep=-0.1em]
-      \item 8+ years delivering end‑to‑end software solutions across the full SDLC—from requirements and architecture to testing, deployment and support—in fast‑moving teams.
-      \item Strong multi‑language developer (Python, JavaScript/TypeScript, C, C++) able to quickly learn and apply new technologies.
-      \item Hands‑on experience maintaining and refactoring legacy codebases: profiling performance, debugging production issues and writing unit tests to prevent regressions.
-      \item Adept at collaborating with business stakeholders, documenting technical solutions and leading peer code reviews within Agile environments.
+      \item Bioinformatics specialist with 6 years of experience analyzing genomic and molecular data using Python, Galaxy, and HPC pipelines (SLURM, cron).
+      \item Hands-on experience with CI/CD pipelines, shell scripting, and job orchestration in Linux environments using cron and SLURM.
+      \item Strong SDLC understanding: proficient in Git, Jira, Agile/Scrum workflows, and technical documentation.
+      \item Effective communicator and collaborator with business stakeholders, developers, and QA teams in fast-paced Agile teams.
     \end{itemize}
   }
 }{%
   \resumeSection{Faits saillants du profil}{
     \begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, leftmargin=1em, itemsep=-0.1em]
-      \item Plus de 8 ans de développement de solutions logicielles de bout en bout, couvrant tout le cycle SDLC—de la collecte des besoins à la maintenance—au sein d’équipes réactives.
-      \item Développeur polyvalent (Python, JavaScript/TypeScript, C, C++) capable d’apprendre rapidement de nouvelles technologies et méthodologies.
-      \item Expérience pratique dans la maintenance et la refonte de bases de code existantes : profilage des performances, débogage en production et écriture de tests unitaires pour éviter les régressions.
-      \item Habile à collaborer avec les parties prenantes, documenter les solutions techniques et animer les revues de code dans des environnements Agile.
+      \item Spécialiste en bioinformatique avec 6 ans d’expérience dans l’analyse de données génomiques et moléculaires via Python, Galaxy et des pipelines HPC (SLURM, cron).
+      \item Expérience pratique avec les pipelines CI/CD, les scripts shell, et l’orchestration de tâches sur systèmes Linux (cron, SLURM).
+      \item Compréhension approfondie du cycle de développement logiciel : maîtrise de Git, Jira, Agile/Scrum et documentation technique.
+      \item Communicateur efficace, capable de collaborer avec les parties prenantes, les développeurs et les équipes QA dans des environnements Agile.
     \end{itemize}
-  }
-}
-
-% Objective
-\ifthenelse{\boolean{EN}}{%
-  \resumeSection{Professional objective}{
-    Seeking a data-oriented Python role in financial services where I can leverage my experience with RDBMS, MongoDB, scripting, and Linux-based automation to improve system reliability and performance.
-  }
-}{%
-  \resumeSection{Objectif professionnel}{
-    À la recherche d’un poste orienté données en Python dans le secteur financier, où je pourrais mettre à profit mon expérience avec les bases de données relationnelles, MongoDB, les scripts d’automatisation et l’environnement Linux pour renforcer la fiabilité et la performance des systèmes.
   }
 }
 
@@ -160,9 +162,11 @@
     \skillItem{Tests \& Quality}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Scheduling tools}{cron, SLURM (HPC job orchestration)}
     \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
+    \skillItem{Bioinformatics tools}{Galaxy, Biopython, VirtualFlow, Pandas, NumPy, custom Python pipelines for structural and genomic data}
     \skillItem{Tools \& IDEs}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, SVN (TortoiseSVN), Slurm, cron, crontab, Docker}
     \skillItem{Job scheduling \& orchestration}{cron, crontab, SLURM}
     \skillItem{Project management}{Agile, Scrum, Jira, Confluence, Sharepoint, Poker planning, PMP, team coaching, recruiting, retrospective facilitation}
+    \skillItem{AI-assisted development}{Prompting and code generation with ChatGPT, Claude or Gemini}
     \skillItem{Languages}{French (native), English (fluent)}
   }
 }{%
@@ -174,10 +178,12 @@
     \skillItem{Tests \& qualité}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Outils de planification}{cron, SLURM (orchestration de tâches HPC)}
     \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
+    \skillItem{Outils bioinformatiques}{Galaxy, Biopython, VirtualFlow, Pandas, NumPy, pipelines Python personnalisés pour données structurales et génomiques}
     \skillItem{Systèmes d'exploitation}{macOS, Windows, Linux}
     \skillItem{Planification de tâches \& orchestration}{cron, crontab, SLURM}
     \skillItem{Outils \& environnements de développement}{VS Code, Xcode, PyCharm, Jupyter Notebook, LaTeX, Git, SVN (TortoiseSVN), Slurm, cron, crontab, Docker}
     \skillItem{Gestion de projet}{Agile, Scrum, Jira, Confluence, Sharepoint, Poker planning, PMP, coaching d’équipe, recrutement, animation de rétrospectives}
+    \skillItem{Développement assisté par l'IA}{Génération de code et prompting avec ChatGPT, Claude ou Gemini}
     \skillItem{Langues}{Français (natif), Anglais (courant)}
   }
 }
@@ -199,6 +205,7 @@
     \jobItem{Scientific development}{Created Python scripts for biological data analysis (Pandas, Matplotlib). Co-authored open-access publication based on the analysis results. Designed custom bioinformatics workflows to model biological systems and conduct trend detection using Python and Biopython.}
     \jobItem{Cloud infrastructure}{Implemented VirtualFlow pipelines on HPC servers for molecular screening. Extended the VirtualFlow pipeline to over 1.4 billion molecules on Calcul Québec’s SLURM-based HPC system. Automated recovery and scheduling with `cron`, and built custom Python scripts to filter top molecular candidates.}
     \jobItem{Job orchestration}{Managed SLURM pipelines on HPC clusters and automated task recovery with cron and shell scripts.}
+    \jobItem{NGS Pipelines}{Used the Galaxy platform to construct and execute next-generation sequencing (NGS) workflows for processing and analyzing genomic data.}
     \jobItem{Data integration}{Integrated and cross-validated data from multiple sources to ensure consistency and reliability across genomic, transcriptomic, and proteomic datasets used in downstream statistical and structural analysis.}
     \jobItem{Data analysis}{Analyzed ribosome profiling and human genome data using custom Python scripts; generated statistical figures with NumPy, Pandas, and Seaborn. Co-authored a study published in Biology Open.}
     \vspace{1em}
@@ -234,6 +241,7 @@
     \jobItem{Développement scientifique}{Création de scripts Python (Pandas, Matplotlib) pour l'analyse de données biologiques; co-auteur d’une publication en libre accès. Conception de workflows bioinformatiques personnalisés avec Python et Biopython.}
     \jobItem{Infrastructure cloud}{Mise en place de pipelines VirtualFlow sur serveurs HPC pour criblage moléculaire; extension à plus de 1,4 milliard de molécules sur SLURM; automatisation via cron et scripts Python. Environnement Linux utilisé sur les serveurs HPC pour le traitement et l'automatisation.}
     \jobItem{Orchestration de tâches}{Gestion de pipelines SLURM sur grappe HPC et automatisation des reprises avec cron et scripts Shell.}
+    \jobItem{Pipelines NGS}{Utilisation de la plateforme Galaxy pour concevoir et exécuter des workflows de séquençage de nouvelle génération (NGS) pour le traitement et l’analyse de données génomiques.}
     \jobItem{Intégration de données}{Intégration et validation croisée de jeux de données génomiques, transcriptomiques et protéomiques pour garantir cohérence et fiabilité.}
     \jobItem{Analyse de données}{Analyse de profilage ribosomique et génomique avec scripts Python; génération de figures statistiques avec NumPy, Pandas et Seaborn.}
     \vspace{1em}
