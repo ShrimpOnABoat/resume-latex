@@ -84,7 +84,7 @@
 
 % ---------- Automated PDF naming ----------
 % Set the target company once per tailored version. Update this macro only.
-\newcommand{\CompanyName}{Roche}
+\newcommand{\CompanyName}{Trisotech}
 
 % On regular XeLaTeX builds (i.e., not Pandoc), rename the produced PDF at \end{document}.
 \ifpandocconvert
@@ -123,11 +123,11 @@
 % Objective (English version)
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Professional objective}{
-    Bilingual software developer seeking to grow into a Software Architect role within a hybrid team in Montreal. I aim to leverage my experience in Python, cloud platforms, and CI/CD to design secure, scalable solutions while deepening my knowledge in DevOps, architecture, and cross-functional collaboration.
+    Bilingual software developer with a strong background in data transformation, cloud technologies, and full-stack development. I am seeking opportunities where I can contribute to innovative and impactful projects in a collaborative team environment.
   }
 }{%
   \resumeSection{Objectif professionnel}{
-    Développeur bilingue en quête d’un rôle évolutif vers l’architecture logicielle au sein d’une équipe hybride à Montréal. Je souhaite mettre à profit mon expérience en Python, plateformes cloud et CI/CD pour concevoir des solutions sécurisées et évolutives, tout en approfondissant mes connaissances en DevOps, architecture et collaboration interdisciplinaire.
+    Développeur logiciel bilingue avec une solide expérience en transformation de données, technologies cloud et développement full-stack. Je suis à la recherche d'opportunités pour contribuer à des projets innovants et impactants au sein d'une équipe collaborative.
   }
 }
 
@@ -139,6 +139,7 @@
       \item Hands-on experience with CI/CD pipelines, shell scripting, and job orchestration in Linux environments using cron and SLURM.
       \item Strong SDLC understanding: proficient in Git, Jira, Agile/Scrum workflows, and technical documentation.
       \item Effective communicator and collaborator with business stakeholders, developers, and QA teams in fast-paced Agile teams.
+      \item Proficient in data transformation and database technologies including MongoDB; experienced in hybrid work settings.
     \end{itemize}
   }
 }{%
@@ -148,6 +149,7 @@
       \item Expérience pratique avec les pipelines CI/CD, les scripts shell, et l’orchestration de tâches sur systèmes Linux (cron, SLURM).
       \item Compréhension approfondie du cycle de développement logiciel : maîtrise de Git, Jira, Agile/Scrum et documentation technique.
       \item Communicateur efficace, capable de collaborer avec les parties prenantes, les développeurs et les équipes QA dans des environnements Agile.
+      \item Maîtrise de la transformation de données et des bases de données, dont MongoDB; expérience en environnement hybride.
     \end{itemize}
   }
 }
@@ -155,10 +157,10 @@
 % Technical Skills
 \ifthenelse{\boolean{EN}}{%
   \resumeSection{Technical Skills \& Tools}{
-    \skillItem{Programming \& Scripting}{Python, asynchronous programming, JavaScript (React, Node.js), TypeScript, C, Swift, SQL, Bash, C++}
+    \skillItem{Programming \& Scripting}{Python, multithreading, asynchronous programming, JavaScript (React, Node.js), TypeScript, C, Swift, SQL, Bash, C++}
     \skillItem{Web \& Software Development}{Flask, FastAPI, Django, AngularJS, Firebase, WebRTC}
     \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Docker, Git, CI/CD (Azure DevOps), GitLab}
-    \skillItem{Databases}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server, cron}
+    \skillItem{Databases}{MySQL, MongoDB, Oracle, MS SQL Server, cron}
     \skillItem{Tests \& Quality}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Scheduling tools}{cron, SLURM (HPC job orchestration)}
     \skillItem{Data Analysis \& Computer Vision}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
@@ -171,10 +173,10 @@
   }
 }{%
   \resumeSection{Compétences techniques \& Outils}{
-    \skillItem{Programmation \& scripts}{Python, programmation asynchrone, JavaScript (React, Node.js), TypeScript, C, Swift, SQL, Bash, C++}
+    \skillItem{Programmation \& scripts}{Python, multithreading, programmation asynchrone, JavaScript (React, Node.js), TypeScript, C, Swift, SQL, Bash, C++}
     \skillItem{Développement web \& logiciel}{Flask, FastAPI, Django, AngularJS, Firebase, WebRTC}
     \skillItem{Cloud \& DevOps}{AWS, Google Cloud Platform, Azure, Docker, Git, CI/CD (Azure DevOps)}
-    \skillItem{Bases de données}{PostgreSQL, MySQL, MongoDB, Oracle, MS SQL Server, cron}
+    \skillItem{Bases de données}{MySQL, MongoDB, Oracle, MS SQL Server, cron}
     \skillItem{Tests \& qualité}{Hypothesis, Pytest, iSort, black, flake8, bandit}
     \skillItem{Outils de planification}{cron, SLURM (orchestration de tâches HPC)}
     \skillItem{Analyse de données \& vision par ordinateur}{Pandas, NumPy, OpenCV, Machine Learning, TensorFlow, PyTorch, Seaborn}
@@ -200,6 +202,7 @@
     \jobItem{Python Time-Series Library}{Authored and unit-tested a reusable package for breakpoint detection, trend analysis, and statistical summaries, now adopted across four client projects.}
     \jobItem{CI/CD Automation \& DevOps}{Maintained and improved CI/CD pipelines for smooth deployments across environments. Used Docker and cron automation to streamline builds and data ingestion.}
     \jobItem{Database performance}{Wrote and optimized SQL queries for client dashboards. Participated in migrating and validating production datasets across RDBMS and NoSQL platforms.}
+    \jobItem{Python Software Testing on Windows}{Developed and maintained Python scripts running on Windows to automate software testing, including debugging, logging, and technical documentation based on client requirements.}
     \vspace{1em}
     \resumeItem{Aging research project}{UQAM, UdeM}{2016-2022}
     \jobItem{Scientific development}{Created Python scripts for biological data analysis (Pandas, Matplotlib). Co-authored open-access publication based on the analysis results. Designed custom bioinformatics workflows to model biological systems and conduct trend detection using Python and Biopython.}
@@ -208,6 +211,7 @@
     \jobItem{NGS Pipelines}{Used the Galaxy platform to construct and execute next-generation sequencing (NGS) workflows for processing and analyzing genomic data.}
     \jobItem{Data integration}{Integrated and cross-validated data from multiple sources to ensure consistency and reliability across genomic, transcriptomic, and proteomic datasets used in downstream statistical and structural analysis.}
     \jobItem{Data analysis}{Analyzed ribosome profiling and human genome data using custom Python scripts; generated statistical figures with NumPy, Pandas, and Seaborn. Co-authored a study published in Biology Open.}
+    \jobItem{Tests logiciels Python sous Windows}{Développement et maintenance de scripts Python sous Windows pour l’automatisation de tests logiciels : débogage, journalisation et documentation technique selon les spécifications clients.}
     \vspace{1em}
     \resumeItem{Founder}{Artplay (Startup project)}{2014–2015}
     \jobItem{Startup Development}{Started a hardware-focused startup aiming to develop a dynamic e-ink-based display. Joined the District 3 incubator’s intensive program. Created a business model, investor presentations, and early prototypes. Project paused due to technological immaturity at the time.}
@@ -290,14 +294,12 @@
     \resumeItem{Multiplayer online game}{Created a multiplayer online card game in Swift and JavaScript (Node.js version); implemented real-time 3-player sync, custom animations, and audio feedback with Firebase P2P networking.}{}
     \resumeItem{Journaling app}{Developed a Swift-based journaling application focused on user-centric data capture and mood analysis; includes interface design and export functionality.}{}
     \resumeItem{Multi-instrumentalist}{Piano, saxophone, guitar, now learning drums.}{}
-    \resumeItem{Sports}{Training for a marathon}{}
   }
 }{%
   \resumeSection{Projets personnels}{
     \resumeItem{Jeu de cartes multijoueur}{Création d'un jeu de cartes en ligne multijoueur en Swift et JavaScript (version Node.js) ; synchronisation en temps réel à 3 joueurs, animations personnalisées et effets sonores via Firebase P2P.}{}
     \resumeItem{Application de journalisation}{Développement d'une application de journalisation en Swift centrée sur l'utilisateur, avec capture d’humeur, design d’interface et export de données.}{}
     \resumeItem{Multi-instrumentiste}{Piano, saxophone, guitare, batterie (en apprentissage).}{}
-    \resumeItem{Sport}{Préparation à un marathon.}{}
   }
 }
 
